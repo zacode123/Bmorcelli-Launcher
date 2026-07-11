@@ -67,8 +67,8 @@ void InputHandler(void) {
     if (l == BTN_ACT) PrevPress = true;
     if (r == BTN_ACT) NextPress = true;
     if (b == BTN_ACT) {
-        DownPress = true;
         EscPress = true;
+        DownPress = true;
         return;
     }
     if (s == BTN_ACT) SelPress = true;
