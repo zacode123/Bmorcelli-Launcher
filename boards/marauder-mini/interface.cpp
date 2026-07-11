@@ -8,9 +8,8 @@
 ** Description:   initial setup for the device
 ***************************************************************************************/
 void _setup_gpio() {
-    launcherGpioInputPullup(UP_BTN); // Sets the power btn as an INPUT
+    launcherGpioInputPullup(BK_BTN);
     launcherGpioInputPullup(SEL_BTN);
-    launcherGpioInputPullup(DW_BTN);
     launcherGpioInputPullup(R_BTN);
     launcherGpioInputPullup(L_BTN);
 }
@@ -56,8 +55,7 @@ void InputHandler(void) {
     if (launcherMillis() - tm > 200 || LongPress) {
     } else return;
 
-    bool u = launcherGpioRead(UP_BTN);
-    bool d = launcherGpioRead(DW_BTN);
+    bool b = launcherGpioRead(BK_BTN);
     bool r = launcherGpioRead(R_BTN);
     bool l = launcherGpioRead(L_BTN);
     bool s = launcherGpioRead(SEL_BTN);
@@ -66,14 +64,13 @@ void InputHandler(void) {
         if (!wakeUpScreen()) AnyKeyPress = true;
         else return;
     }
-    if (l == BTN_ACT && r == BTN_ACT) {
+    if (l == BTN_ACT) PrevPress = true;
+    if (r == BTN_ACT) NextPress = true;
+    if (b == BTN_ACT) {
+        DownPress = true;
         EscPress = true;
         return;
     }
-    if (l == BTN_ACT) PrevPress = true;
-    if (r == BTN_ACT) NextPress = true;
-    if (u == BTN_ACT) UpPress = true;
-    if (d == BTN_ACT) DownPress = true;
     if (s == BTN_ACT) SelPress = true;
 }
 
