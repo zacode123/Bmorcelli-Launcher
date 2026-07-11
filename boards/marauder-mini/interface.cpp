@@ -59,7 +59,7 @@ void InputHandler(void) {
     bool r = launcherGpioRead(R_BTN);
     bool l = launcherGpioRead(L_BTN);
     bool s = launcherGpioRead(SEL_BTN);
-    if (s == BTN_ACT || u == BTN_ACT || d == BTN_ACT || r == BTN_ACT || l == BTN_ACT) {
+    if (s == BTN_ACT || b == BTN_ACT || r == BTN_ACT || l == BTN_ACT) {
         tm = launcherMillis();
         if (!wakeUpScreen()) AnyKeyPress = true;
         else return;
