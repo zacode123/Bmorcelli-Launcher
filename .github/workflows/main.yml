@@ -15,7 +15,7 @@ jobs:
       fail-fast: false
       matrix:
         board:
-          - { env: "arduino-nesso-n1"           }
+            - { env: "arduino-nesso-n1"           }
             - { env: "m5stack-cardputer"          }
             - { env: "m5stack-cplus2"             }
             - { env: "m5stack-cplus1_1"           }
